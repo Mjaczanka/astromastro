@@ -6,9 +6,32 @@
   <title>Page 1 - My School Project</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .astro-form { margin-top: 20px; }
-    .astro-form select, .astro-form button { margin: 6px; padding: 8px; }
-    .astro-result { margin-top: 32px; font-size: 1.2em; color: #154360; font-weight: bold; }
+    .astro-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+    .astro-form {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .astro-form select, .astro-form button {
+      padding: 8px;
+      font-size: 1em;
+    }
+    .astro-result { 
+      margin-top: 24px; 
+      font-size: 1.2em; 
+      color: #154360; 
+      font-weight: bold; 
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -30,44 +53,45 @@
     </div>
     <div class="main-content">
       <h1>AstroMastro</h1>
-      <p>Select your birth date and see your horoscope!</p>
-      <form class="astro-form" onsubmit="return showHoroscope(event)">
-        <select id="day" required>
-          <option value="">Day</option>
-          <!-- Day options 1–31 -->
-          <script>
-            for (let d = 1; d <= 31; d++) {
-              document.write(`<option value="${d}">${d}</option>`);
-            }
-          </script>
-        </select>
-        <select id="month" required>
-          <option value="">Month</option>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
-        </select>
-        <select id="year" required>
-          <option value="">Year</option>
-          <script>
-            let yearNow = new Date().getFullYear();
-            for (let y = yearNow; y >= 1900; y--) {
-              document.write(`<option value="${y}">${y}</option>`);
-            }
-          </script>
-        </select>
-        <button type="submit">AstroMastro</button>
-      </form>
-      <div id="result" class="astro-result"></div>
+      <p style="text-align:center;">Select your birth date and see your horoscope!</p>
+      <div class="astro-center">
+        <form class="astro-form" onsubmit="return showHoroscope(event)">
+          <select id="day" required>
+            <option value="">Day</option>
+            <script>
+              for (let d = 1; d <= 31; d++) {
+                document.write(`<option value="${d}">${d}</option>`);
+              }
+            </script>
+          </select>
+          <select id="month" required>
+            <option value="">Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <select id="year" required>
+            <option value="">Year</option>
+            <script>
+              let yearNow = new Date().getFullYear();
+              for (let y = yearNow; y >= 1900; y--) {
+                document.write(`<option value="${y}">${y}</option>`);
+              }
+            </script>
+          </select>
+          <button type="submit">AstroMastro</button>
+        </form>
+        <div id="result" class="astro-result"></div>
+      </div>
     </div>
     <div class="sidebar right">
       <b>Right Sidebar</b>
@@ -96,7 +120,6 @@
     }
 
     function randomHoroscope(sign) {
-      // Fun demo horoscopes!
       const fortunes = {
         Aries: ["A surprise is waiting for you!", "Trust your instincts today."],
         Taurus: ["Stability will find you soon.", "Hard work pays off."],
@@ -128,3 +151,10 @@
       let fortune = randomHoroscope(sign);
       document.getElementById("result").innerHTML = `
         <div>Your sign: <b>${sign}</b></div>
+        <div>Horoscope: <i>${fortune}</i></div>
+      `;
+      return false;
+    }
+  </script>
+</body>
+</html>
