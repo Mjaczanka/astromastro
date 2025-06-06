@@ -145,6 +145,18 @@
     </div>
   </div>
   <script>
+    function getMatchComment(percent) {
+      if (percent < 25) {
+        return "No, it’s not gonna happen.";
+      } else if (percent < 50) {
+        return "It’s unlikely, but you never know.";
+      } else if (percent < 75) {
+        return "It may happen, give it a try!";
+      } else {
+        return "Strong match! Destiny is calling.";
+      }
+    }
+
     function showMatch(event) {
       event.preventDefault();
       // Grab values
@@ -160,14 +172,14 @@
         return false;
       }
 
-      // Fun: generate a random (but repeatable-ish) percentage based on the dates
+      // Generate a repeatable-ish percentage based on the dates
       let sum = d1 + m1 + y1 + d2 + m2 + y2;
       let matchPercent = 40 + (Math.abs(Math.sin(sum)) * 60) | 0; // 40-99%
-      let happenPercent = 20 + (Math.abs(Math.cos(sum)) * 80) | 0; // 20-99%
+      let comment = getMatchComment(matchPercent);
 
       document.getElementById("result3").innerHTML = `
         <div>Relationship match: <b>${matchPercent}%</b></div>
-        <div>Chance of it happening: <b>${happenPercent}%</b></div>
+        <div style="font-size:1em;font-weight:normal;margin-top:12px;">${comment}</div>
       `;
       return false;
     }
