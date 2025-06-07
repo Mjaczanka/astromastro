@@ -3,15 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Page 1 - My School Project</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>My School Project - Home</title>
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+    }
+    .burger-icon {
+      display: inline-block;
+      padding: 10px 14px;
+      background: #222;
+      color: #fff;
+      border-radius: 6px;
+      margin: 14px 0 0 14px;
+      z-index: 10;
+      position: relative;
+    }
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      background: #23272c;
+      position: absolute;
+      top: 56px;
+      left: 16px;
+      min-width: 160px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 12px #0003;
+      z-index: 20;
+    }
+    .burger-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-bottom: 1px solid #353b44;
+      transition: background 0.2s;
+    }
+    .burger-menu a:last-child { border-bottom: none; }
+    .burger-menu a:hover {
+      background: #29303a;
+      color: #f1c40f;
+    }
+    #burger-toggle {
+      display: none;
+    }
+    #burger-toggle:checked ~ .burger-menu {
+      display: flex;
+    }
+    .menu-title {
+      display: inline-block;
+      margin-left: 70px;
+      margin-top: 22px;
+      font-size: 1.25em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #222;
+    }
+    .container {
+      display: flex;
+      min-height: 85vh;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 56px;
+    }
+    .main-content {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 2px 14px #0001;
+      max-width: 700px;
+      width: 100%;
+      margin: 40px auto;
+    }
+    @media (max-width: 700px) {
+      .main-content {
+        padding: 22px 5vw;
+      }
+      .menu-title {
+        margin-left: 60px;
+        font-size: 1em;
+        margin-top: 20px;
+      }
+      .burger-menu {
+        left: 0;
+        right: 0;
+        min-width: 0;
+        width: 94vw;
+        margin-left: 3vw;
+      }
+    }
+
+    /* AstroMastro extra styling */
     .astro-center {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      margin-top: 40px;
+      margin-top: 20px;
     }
     .astro-form {
       display: flex;
@@ -20,6 +108,7 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 16px;
+      margin-top: 18px;
     }
     .astro-form select, .astro-form button {
       padding: 8px;
@@ -35,22 +124,20 @@
   </style>
 </head>
 <body>
-  <div class="topbar">
-    My School Project
-    <div class="nav">
-      <a href="index.html">Home</a>
-      <a href="page1.html">Page 1</a>
-      <a href="page2.html">Page 2</a>
-      <a href="page3.html">Page 3</a>
-      <a href="page4.html">Page 4</a>
-      <a href="page5.html">Page 5</a>
-    </div>
-  </div>
+  <!-- Hamburger Menu -->
+  <input type="checkbox" id="burger-toggle" style="display:none;">
+  <label for="burger-toggle" class="burger-icon" style="font-size:2em;cursor:pointer;user-select:none;">&#9776;</label>
+  <nav class="burger-menu">
+    <a href="index.html">Home</a>
+    <a href="page1.html">Page 1</a>
+    <a href="page2.html">Page 2</a>
+    <a href="page3.html">Page 3</a>
+    <a href="page4.html">Page 4</a>
+    <a href="page5.html">Page 5</a>
+  </nav>
+  <span class="menu-title">My School Project</span>
+
   <div class="container">
-    <div class="sidebar left">
-      <b>Left Sidebar</b>
-      <p>Links or info here</p>
-    </div>
     <div class="main-content">
       <h1>AstroMastro</h1>
       <p style="text-align:center;">Select your birth date and see your horoscope!</p>
@@ -92,10 +179,6 @@
         </form>
         <div id="result" class="astro-result"></div>
       </div>
-    </div>
-    <div class="sidebar right">
-      <b>Right Sidebar</b>
-      <p>More info, ads, etc.</p>
     </div>
   </div>
   <script>
