@@ -140,7 +140,7 @@
       <h1>AstroMastro: Wyszukiwarka Kamieni Urodzinowych</h1>
       <p style="text-align:center;">
         Witaj w naszej interaktywnej wyszukiwarce kamieni urodzinowych!<br>
-        Wybierz swoją datę urodzenia i poznaj kamień przypisany do Twojego miesiąca narodzin oraz ciekawostkę o nim.<br>
+        Wybierz swoją datę urodzenia i poznaj kamień przypisany do Twojego miesiąca narodzin oraz poznaj jego fascynującą historię.<br>
         <span style="color:#555;">Kamienie urodzinowe mają swoją symbolikę – sprawdź, co mówi o Tobie Twój kamień!</span>
       </p>
       <div class="astro-center">
@@ -189,24 +189,190 @@
     </div>
   </div>
   <script>
-    function getBirthstone(month) {
-      // Kamienie urodzinowe z ciekawostkami
-      const birthstones = {
-        1:  "Granat – kamień siły i energii. Mówi się, że przynosi wytrwałość i ochronę.",
-        2:  "Ametyst – symbol spokoju i równowagi. Uważa się, że chroni przed negatywną energią.",
-        3:  "Akwamaryn – kamień odwagi, spokoju i jasności umysłu. Dawniej był talizmanem żeglarzy.",
-        4:  "Diament – symbol czystości i niezniszczalnej miłości. Najtwardszy minerał na Ziemi!",
-        5:  "Szmaragd – kojarzony z harmonią, odnową i sukcesem. Ulubiony kamień Kleopatry.",
-        6:  "Aleksandryt (lub perła/księżycowy) – symbol szczęścia i przemiany. Często uznaje się też perły za kamień czerwca.",
-        7:  "Rubin – oznacza miłość i pasję. Uważany za 'króla klejnotów', przynosi energię i odwagę.",
-        8:  "Oliwin – kamień wewnętrznego spokoju i dobrego samopoczucia. Nazywany także peridotem.",
-        9:  "Szafir – symbol mądrości i lojalności. Noszony przez wielu monarchów.",
-        10: "Opal (lub turmalin) – opal podkreśla kreatywność i szczęście. Turmalin chroni przed złą energią.",
-        11: "Topaz (lub cytryn) – topaz wzmacnia wiarę w siebie i sukces. Cytryn jest kamieniem optymizmu.",
-        12: "Turkus (lub cyrkon/tanzanit) – kamień ochrony, przyjaźni i szczęścia, znany od tysięcy lat."
-      };
-      return birthstones[month] || "Brak danych o kamieniu dla wybranego miesiąca.";
-    }
+    // Obszerne opisy w języku polskim dla każdego kamienia
+    const birthstoneDescriptions = {
+      1: `
+        <b>Granat – kamień stycznia</b><br><br>
+        <p>
+        Granat od wieków uważany jest za kamień, który przynosi siłę, odwagę i ochronę przed złem. Już w starożytnym Egipcie ozdabiano nim biżuterię faraonów, wierząc, że pomaga w podróży po zaświatach. W średniowieczu wojownicy nosili granaty jako talizmany zapewniające im zwycięstwo oraz bezpieczny powrót do domu.
+        </p>
+        <p>
+        Nazwa „granat” pochodzi od łacińskiego słowa „granatus”, czyli ziarnisty – bo kamień ten często przypomina nasiona granatu. Jego głęboka, czerwona barwa symbolizuje miłość, pasję, a także energię życiową. Wierzono, że chroni przed smutkiem oraz zapewnia harmonię w związkach.
+        </p>
+        <p>
+        W tradycjach wielu kultur granat uznawano za kamień przyjaźni – podarowany bliskiej osobie miał wzmacniać więź i przynosić szczęście. W Indiach przypisywano mu moc uzdrawiającą, a także właściwości poprawiające pamięć i koncentrację.
+        </p>
+        <p>
+        Dziś granaty wykorzystywane są nie tylko w jubilerstwie, ale też w medycynie niekonwencjonalnej – jako amulet mający pomagać w regeneracji organizmu. Ich piękno i symbolika czynią je wyjątkowym prezentem na każdą okazję.
+        </p>
+      `,
+      2: `
+        <b>Ametyst – kamień lutego</b><br><br>
+        <p>
+        Ametyst to odmiana kwarcu o niezwykłej, fioletowej barwie, która od tysięcy lat fascynuje ludzi na całym świecie. W starożytnej Grecji uważano, że ametyst chroni przed upiciem i wszelkimi uzależnieniami, dlatego często pito wino z kielichów ozdobionych tym kamieniem.
+        </p>
+        <p>
+        Jego nazwa pochodzi od greckiego „amethystos” – „nie pijany”. Uznawany jest za kamień spokoju, wyciszenia i jasności umysłu. Mnisi nosili ametysty, aby sprzyjały medytacji i koncentracji podczas modlitwy.
+        </p>
+        <p>
+        W średniowieczu ametyst symbolizował władzę duchową i był jednym z ulubionych kamieni biskupów. Wierzono, że pomaga w walce ze stresem, bezsennością oraz negatywnymi emocjami. Był także symbolem pokory i szczerości.
+        </p>
+        <p>
+        Współcześnie ametysty zdobią nie tylko pierścionki czy naszyjniki, ale także są popularnym elementem w dekoracjach wnętrz. Kamień ten wciąż uznawany jest za talizman przynoszący harmonię i równowagę.
+        </p>
+      `,
+      3: `
+        <b>Akwamaryn – kamień marca</b><br><br>
+        <p>
+        Akwamaryn, jak sama nazwa wskazuje, związany jest z wodą. Jego delikatny, błękitny kolor przypomina spokojne, morskie fale. W dawnych czasach marynarze nosili go jako amulet chroniący przed burzami i zapewniający szczęśliwy powrót z podróży.
+        </p>
+        <p>
+        W starożytnym Rzymie akwamaryn był symbolem miłości i szczęścia małżeńskiego. Uważano, że sprzyja pojednaniu i harmonii w związku. Dawniej wykorzystywano go też w rytuałach oczyszczających oraz do leczenia chorób gardła i układu oddechowego.
+        </p>
+        <p>
+        Współcześnie akwamaryn jest uważany za kamień odwagi, inspiracji i kreatywności. Pomaga pokonywać lęki i stresy, przynosi jasność umysłu i ułatwia podejmowanie trudnych decyzji.
+        </p>
+        <p>
+        W jubilerstwie akwamaryn ceni się za piękny kolor oraz przejrzystość. Najcenniejsze okazy pochodzą z Brazylii, a ich wartość rośnie wraz z intensywnością barwy. Kamień ten doskonale sprawdza się jako wyjątkowy prezent dla osób urodzonych w marcu.
+        </p>
+      `,
+      4: `
+        <b>Diament – kamień kwietnia</b><br><br>
+        <p>
+        Diament to najtwardszy znany minerał na Ziemi, a jednocześnie symbol wiecznej miłości i niezniszczalnej więzi. W starożytnych Indiach uważano, że diamenty powstały z błyskawic – ich blask miał chronić przed złymi mocami i przynosić szczęście.
+        </p>
+        <p>
+        W starożytnej Grecji i Rzymie diamenty były symbolem boskości i władzy. Nosili je tylko najpotężniejsi – królowie i wojownicy. Do dziś diamenty pozostają ulubionym kamieniem koron i insygniów królewskich na całym świecie.
+        </p>
+        <p>
+        Diamenty są nie tylko piękne, ale i praktyczne – ze względu na swoją twardość wykorzystywane są także w przemyśle. W jubilerstwie cenione są za niezwykły blask i przejrzystość, a pierścionek zaręczynowy z diamentem stał się symbolem miłości na całe życie.
+        </p>
+        <p>
+        Współcześnie diamenty fascynują zarówno naukowców, jak i miłośników piękna. Mówi się, że przynoszą odwagę, oczyszczają myśli i wzmacniają pozytywne cechy charakteru.
+        </p>
+      `,
+      5: `
+        <b>Szmaragd – kamień maja</b><br><br>
+        <p>
+        Szmaragd jest uważany za jeden z najpiękniejszych kamieni szlachetnych. Jego intensywnie zielony kolor symbolizuje odrodzenie, harmonię i szczęście. Już starożytni Egipcjanie cenili szmaragdy za ich urodę i moc – Kleopatra uwielbiała ozdabiać się tymi klejnotami.
+        </p>
+        <p>
+        W starożytnym Rzymie szmaragd był symbolem płodności i młodości. Uważano, że przyciąga bogactwo i dobrobyt oraz chroni przed chorobami. Przypisywano mu także moc przewidywania przyszłości.
+        </p>
+        <p>
+        Szmaragdy są wyjątkowo rzadkie i cenione w jubilerstwie. Najlepsze okazy pochodzą z Kolumbii i Zambii. Kamień ten jest wyjątkowym prezentem dla osób urodzonych w maju – symbolizuje rozwój, optymizm i siłę natury.
+        </p>
+        <p>
+        Dziś szmaragd uznawany jest za talizman przynoszący harmonię w relacjach, rozwijający kreatywność i inspirujący do podejmowania nowych wyzwań.
+        </p>
+      `,
+      // Dodaj tak szczegółowe opisy dla pozostałych miesięcy...
+      6: `
+        <b>Aleksandryt, perła lub kamień księżycowy – kamienie czerwca</b><br><br>
+        <p>
+        Czerwiec to wyjątkowy miesiąc, bo ma aż trzy różne kamienie urodzinowe. Aleksandryt znany jest ze swojej zmiennej barwy – w świetle dziennym jest zielony, a przy sztucznym świetle staje się czerwono-purpurowy. Symbolizuje przemianę, szczęście i harmonię.
+        </p>
+        <p>
+        Perła – jedyny kamień szlachetny pochodzenia organicznego, od wieków uznawana jest za symbol niewinności, czystości i elegancji. Królowe oraz arystokratki często ozdabiały się perłami, wierząc w ich moc ochronną.
+        </p>
+        <p>
+        Kamień księżycowy, jak sama nazwa wskazuje, jest związany z energią Księżyca. Ma opalizujący blask i symbolizuje intuicję, emocje oraz nowe początki. Jest kamieniem artystów i ludzi kreatywnych.
+        </p>
+        <p>
+        Wszystkie kamienie czerwca mają wspólną cechę – pomagają odnaleźć harmonię, chronią przed negatywną energią i dodają pewności siebie osobom urodzonym w tym miesiącu.
+        </p>
+      `,
+      7: `
+        <b>Rubin – kamień lipca</b><br><br>
+        <p>
+        Rubin to kamień o głębokiej, czerwonej barwie, który od wieków kojarzony jest z miłością, pasją i energią. W starożytnych Indiach uważano go za „króla kamieni szlachetnych”. Był symbolem siły życiowej oraz odwagi.
+        </p>
+        <p>
+        Wierzono, że rubin chroni przed chorobami i złymi duchami. Wielu władców nosiło rubiny jako talizmany zapewniające im powodzenie i bezpieczeństwo w bitwach.
+        </p>
+        <p>
+        Rubin ma unikalną właściwość – pod wpływem światła może wydawać się jeszcze bardziej intensywny. Kamienie o najczystszej, głębokiej czerwieni są najcenniejsze na świecie.
+        </p>
+        <p>
+        Dla osób urodzonych w lipcu rubin jest symbolem entuzjazmu, determinacji i nieustającej pasji do życia.
+        </p>
+      `,
+      8: `
+        <b>Oliwin (Peridot) – kamień sierpnia</b><br><br>
+        <p>
+        Oliwin, znany też jako peridot, zachwyca świeżym, zielonym kolorem, który symbolizuje odnowę, dobrobyt i optymizm. W starożytnym Egipcie nazywany był „kamieniem słońca” – wierzono, że chroni przed złymi snami i duchami.
+        </p>
+        <p>
+        W epoce średniowiecza peridot miał chronić przed zawiścią oraz oczyszczać umysł z negatywnych myśli. Używany był także do ozdabiania świątyń i królewskich insygniów.
+        </p>
+        <p>
+        Ciekawostką jest to, że niektóre peridoty pochodzą z meteorytów, które spadły na Ziemię! To czyni je jednymi z najstarszych minerałów wykorzystywanych przez człowieka.
+        </p>
+        <p>
+        Dla osób urodzonych w sierpniu peridot symbolizuje otwartość na świat, pogodę ducha oraz szczęście w życiu codziennym.
+        </p>
+      `,
+      9: `
+        <b>Szafir – kamień września</b><br><br>
+        <p>
+        Szafir to nie tylko symbol mądrości i lojalności, ale także jeden z najbardziej pożądanych kamieni szlachetnych na świecie. Jego intensywny niebieski kolor fascynował ludzi od tysiącleci.
+        </p>
+        <p>
+        W starożytnych Indiach szafir uznawano za „kamień nieba” – miał łączyć z siłami duchowymi i chronić przed złymi urokami. W średniowieczu nosili go królowie oraz biskupi jako symbol prawdy i wierności.
+        </p>
+        <p>
+        Szafiry są odporne na zarysowania, przez co świetnie sprawdzają się w codziennej biżuterii. Najcenniejsze pochodzą z Kaszmiru oraz Sri Lanki.
+        </p>
+        <p>
+        Dla osób urodzonych we wrześniu szafir to amulet mądrości, rozwagi i spokoju ducha.
+        </p>
+      `,
+      10: `
+        <b>Opal (lub turmalin) – kamienie października</b><br><br>
+        <p>
+        Opal wyróżnia się niezwykłą grą barw – każdy kamień jest niepowtarzalny. Wierzono, że opale zawierają wszystkie barwy tęczy, co czyni je talizmanami kreatywności i szczęścia.
+        </p>
+        <p>
+        W średniowieczu opale były cenione jako kamienie proroków, a w Australii – skąd pochodzi większość opali – uważane są za narodowy skarb.
+        </p>
+        <p>
+        Alternatywnie w październiku popularny jest też turmalin, szczególnie różowy, który symbolizuje miłość, ochronę i radość życia.
+        </p>
+        <p>
+        Opal i turmalin inspirują osoby urodzone w październiku do wyrażania siebie, poszukiwania szczęścia i kreatywnego podejścia do codzienności.
+        </p>
+      `,
+      11: `
+        <b>Topaz (lub cytryn) – kamienie listopada</b><br><br>
+        <p>
+        Topaz, najczęściej w odcieniach złotych i żółtych, uznawany jest za kamień sukcesu, szczerości i przyjaźni. Wierzono, że wzmacnia wiarę w siebie oraz przyciąga dobrobyt.
+        </p>
+        <p>
+        W starożytnym Egipcie noszono topazy jako amulety chroniące przed złym losem, a w starożytnym Rzymie były one symbolem siły.
+        </p>
+        <p>
+        Alternatywą dla topazu jest cytryn, kamień optymizmu i radości. Nazywany jest „kamieniem kupców”, gdyż miał przynosić sukcesy finansowe.
+        </p>
+        <p>
+        Dla osób urodzonych w listopadzie topaz i cytryn są symbolem energii, szczęścia oraz pogody ducha.
+        </p>
+      `,
+      12: `
+        <b>Turkus (lub cyrkon/tanzanit) – kamienie grudnia</b><br><br>
+        <p>
+        Turkus to kamień znany od tysięcy lat – używano go już w starożytnym Egipcie i Persji jako amulet ochronny. Miał zapewniać szczęście w podróży i chronić przed nieszczęściami.
+        </p>
+        <p>
+        W kulturze Indian Ameryki Północnej turkus symbolizuje połączenie ziemi z niebem, siłę duchową oraz uzdrowienie.
+        </p>
+        <p>
+        Alternatywnie w grudniu popularny jest cyrkon oraz tanzanit, oba o niebieskiej, intensywnej barwie. Cyrkon jest jednym z najstarszych minerałów na Ziemi, a tanzanit odkryto dopiero w XX wieku!
+        </p>
+        <p>
+        Kamienie grudnia mają symbolizować ochronę, przyjaźń, mądrość i otwartość na nowe doświadczenia.
+        </p>
+      `
+    };
 
     function showBirthstone(event) {
       event.preventDefault();
@@ -220,15 +386,12 @@
         return false;
       }
 
-      let birthstone = getBirthstone(miesiac);
+      let opis = birthstoneDescriptions[miesiac] || "Brak szczegółowych informacji o kamieniu dla wybranego miesiąca.";
 
       resultDiv.innerHTML = `
         <div>
           <span style="font-size:1.1em;">Twój kamień urodzinowy dla daty <b>${dzien}.${miesiac}.${rok}</b> to:</span><br><br>
-          <b style="font-size:1.25em; color:#174086;">${birthstone}</b>
-        </div>
-        <div style="margin-top:18px; color:#556;">
-          <i>Czy wiedziałeś/aś? Każdy kamień urodzinowy ma swoją niepowtarzalną historię i symbolikę – sprawdź, czy zgadza się z Twoją osobowością!</i>
+          ${opis}
         </div>
       `;
       return false;
