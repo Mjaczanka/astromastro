@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>My School Project - Relationship Match</title>
+  <title>Mój projekt szkolny – Dopasowanie w związku</title>
   <style>
     body {
       margin: 0;
@@ -92,7 +92,6 @@
         margin-left: 3vw;
       }
     }
-    /* AstroMastro Relationship Match styling */
     .astro-center {
       display: flex;
       justify-content: center;
@@ -134,25 +133,25 @@
   <input type="checkbox" id="burger-toggle" style="display:none;">
   <label for="burger-toggle" class="burger-icon" style="font-size:2em;cursor:pointer;user-select:none;">&#9776;</label>
   <nav class="burger-menu">
-    <a href="index.html">Home</a>
-    <a href="page1.html">Page 1</a>
-    <a href="page2.html">Page 2</a>
-    <a href="page3.html">Page 3</a>
-    <a href="page4.html">Page 4</a>
-    <a href="page5.html">Page 5</a>
+    <a href="index.html">Strona główna</a>
+    <a href="page1.html">Strona 1</a>
+    <a href="page2.html">Strona 2</a>
+    <a href="page3.html">Strona 3</a>
+    <a href="page4.html">Strona 4</a>
+    <a href="page5.html">Strona 5</a>
   </nav>
-  <span class="menu-title">My School Project</span>
+  <span class="menu-title">Mój projekt szkolny</span>
 
   <div class="container">
     <div class="main-content">
-      <h1>AstroMastro: Relationship Match</h1>
-      <p style="text-align:center;">Enter the birth dates of two people and see your match!</p>
+      <h1>AstroMastro: Dopasowanie w związku</h1>
+      <p style="text-align:center;">Wpisz daty urodzenia dwóch osób i zobacz swoje dopasowanie!</p>
       <div class="astro-center">
         <form class="astro-form" onsubmit="return showMatch(event)">
           <div class="person-fields">
-            <span class="astro-label">Person 1:</span>
+            <span class="astro-label">Osoba 1:</span>
             <select id="day1" required>
-              <option value="">Day</option>
+              <option value="">Dzień</option>
               <script>
                 for (let d = 1; d <= 31; d++) {
                   document.write(`<option value="${d}">${d}</option>`);
@@ -160,22 +159,22 @@
               </script>
             </select>
             <select id="month1" required>
-              <option value="">Month</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+              <option value="">Miesiąc</option>
+              <option value="1">Styczeń</option>
+              <option value="2">Luty</option>
+              <option value="3">Marzec</option>
+              <option value="4">Kwiecień</option>
+              <option value="5">Maj</option>
+              <option value="6">Czerwiec</option>
+              <option value="7">Lipiec</option>
+              <option value="8">Sierpień</option>
+              <option value="9">Wrzesień</option>
+              <option value="10">Październik</option>
+              <option value="11">Listopad</option>
+              <option value="12">Grudzień</option>
             </select>
             <select id="year1" required>
-              <option value="">Year</option>
+              <option value="">Rok</option>
               <script>
                 let yearNow1 = new Date().getFullYear();
                 for (let y = yearNow1; y >= 1900; y--) {
@@ -185,9 +184,9 @@
             </select>
           </div>
           <div class="person-fields">
-            <span class="astro-label">Person 2:</span>
+            <span class="astro-label">Osoba 2:</span>
             <select id="day2" required>
-              <option value="">Day</option>
+              <option value="">Dzień</option>
               <script>
                 for (let d = 1; d <= 31; d++) {
                   document.write(`<option value="${d}">${d}</option>`);
@@ -195,22 +194,22 @@
               </script>
             </select>
             <select id="month2" required>
-              <option value="">Month</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+              <option value="">Miesiąc</option>
+              <option value="1">Styczeń</option>
+              <option value="2">Luty</option>
+              <option value="3">Marzec</option>
+              <option value="4">Kwiecień</option>
+              <option value="5">Maj</option>
+              <option value="6">Czerwiec</option>
+              <option value="7">Lipiec</option>
+              <option value="8">Sierpień</option>
+              <option value="9">Wrzesień</option>
+              <option value="10">Październik</option>
+              <option value="11">Listopad</option>
+              <option value="12">Grudzień</option>
             </select>
             <select id="year2" required>
-              <option value="">Year</option>
+              <option value="">Rok</option>
               <script>
                 let yearNow2 = new Date().getFullYear();
                 for (let y = yearNow2; y >= 1900; y--) {
@@ -228,19 +227,19 @@
   <script>
     function getMatchComment(percent) {
       if (percent < 25) {
-        return "No, it’s not gonna happen.";
+        return "Nie, to się raczej nie uda.";
       } else if (percent < 50) {
-        return "It’s unlikely, but you never know.";
+        return "Mało prawdopodobne, ale nigdy nie wiadomo.";
       } else if (percent < 75) {
-        return "It may happen, give it a try!";
+        return "Może się udać, spróbujcie!";
       } else {
-        return "Strong match! Destiny is calling.";
+        return "Silne dopasowanie! Przeznaczenie Was wzywa.";
       }
     }
 
     function showMatch(event) {
       event.preventDefault();
-      // Grab values
+      // Pobranie wartości
       let d1 = parseInt(document.getElementById("day1").value, 10);
       let m1 = parseInt(document.getElementById("month1").value, 10);
       let y1 = parseInt(document.getElementById("year1").value, 10);
@@ -249,17 +248,17 @@
       let y2 = parseInt(document.getElementById("year2").value, 10);
 
       if (!d1 || !m1 || !y1 || !d2 || !m2 || !y2) {
-        document.getElementById("result3").textContent = "Please select both birth dates.";
+        document.getElementById("result3").textContent = "Wybierz obie daty urodzenia.";
         return false;
       }
 
-      // Generate a repeatable-ish percentage based on the dates
+      // Generowanie procentu dopasowania na podstawie dat
       let sum = d1 + m1 + y1 + d2 + m2 + y2;
       let matchPercent = 40 + (Math.abs(Math.sin(sum)) * 60) | 0; // 40-99%
       let comment = getMatchComment(matchPercent);
 
       document.getElementById("result3").innerHTML = `
-        <div>Relationship match: <b>${matchPercent}%</b></div>
+        <div>Dopasowanie w związku: <b>${matchPercent}%</b></div>
         <div style="font-size:1em;font-weight:normal;margin-top:12px;">${comment}</div>
       `;
       return false;
