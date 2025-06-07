@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>My School Project - Home</title>
+  <title>Mój Projekt Szkolny - Strona Główna</title>
   <style>
     body {
       margin: 0;
@@ -92,8 +92,6 @@
         margin-left: 3vw;
       }
     }
-
-    /* AstroMastro extra styling */
     .astro-center {
       display: flex;
       justify-content: center;
@@ -128,23 +126,23 @@
   <input type="checkbox" id="burger-toggle" style="display:none;">
   <label for="burger-toggle" class="burger-icon" style="font-size:2em;cursor:pointer;user-select:none;">&#9776;</label>
   <nav class="burger-menu">
-    <a href="index.html">Home</a>
-    <a href="page1.html">Page 1</a>
-    <a href="page2.html">Page 2</a>
-    <a href="page3.html">Page 3</a>
-    <a href="page4.html">Page 4</a>
-    <a href="page5.html">Page 5</a>
+    <a href="index.html">Strona główna</a>
+    <a href="page1.html">Strona 1</a>
+    <a href="page2.html">Strona 2</a>
+    <a href="page3.html">Strona 3</a>
+    <a href="page4.html">Strona 4</a>
+    <a href="page5.html">Strona 5</a>
   </nav>
-  <span class="menu-title">My School Project</span>
+  <span class="menu-title">Mój Projekt Szkolny</span>
 
   <div class="container">
     <div class="main-content">
       <h1>AstroMastro</h1>
-      <p style="text-align:center;">Select your birth date and see your horoscope!</p>
+      <p style="text-align:center;">Wybierz swoją datę urodzenia i zobacz swój horoskop!</p>
       <div class="astro-center">
         <form class="astro-form" onsubmit="return showHoroscope(event)">
           <select id="day" required>
-            <option value="">Day</option>
+            <option value="">Dzień</option>
             <script>
               for (let d = 1; d <= 31; d++) {
                 document.write(`<option value="${d}">${d}</option>`);
@@ -152,22 +150,22 @@
             </script>
           </select>
           <select id="month" required>
-            <option value="">Month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+            <option value="">Miesiąc</option>
+            <option value="1">Styczeń</option>
+            <option value="2">Luty</option>
+            <option value="3">Marzec</option>
+            <option value="4">Kwiecień</option>
+            <option value="5">Maj</option>
+            <option value="6">Czerwiec</option>
+            <option value="7">Lipiec</option>
+            <option value="8">Sierpień</option>
+            <option value="9">Wrzesień</option>
+            <option value="10">Październik</option>
+            <option value="11">Listopad</option>
+            <option value="12">Grudzień</option>
           </select>
           <select id="year" required>
-            <option value="">Year</option>
+            <option value="">Rok</option>
             <script>
               let yearNow = new Date().getFullYear();
               for (let y = yearNow; y >= 1900; y--) {
@@ -175,7 +173,7 @@
               }
             </script>
           </select>
-          <button type="submit">AstroMastro</button>
+          <button type="submit">Zobacz horoskop</button>
         </form>
         <div id="result" class="astro-result"></div>
       </div>
@@ -183,15 +181,14 @@
   </div>
   <script>
     function getZodiac(day, month) {
-      // Simple Western zodiac calculation
       const zodiac = [
-        ["Capricorn",   [1,  1]], ["Aquarius",  [1, 20]],
-        ["Pisces",      [2, 19]], ["Aries",     [3, 21]],
-        ["Taurus",      [4, 20]], ["Gemini",    [5, 21]],
-        ["Cancer",      [6, 21]], ["Leo",       [7, 23]],
-        ["Virgo",       [8, 23]], ["Libra",     [9, 23]],
-        ["Scorpio",    [10, 23]], ["Sagittarius",[11,22]],
-        ["Capricorn",  [12,22]]
+        ["Koziorożec", [1, 1]], ["Wodnik", [1, 20]],
+        ["Ryby", [2, 19]], ["Baran", [3, 21]],
+        ["Byk", [4, 20]], ["Bliźnięta", [5, 21]],
+        ["Rak", [6, 21]], ["Lew", [7, 23]],
+        ["Panna", [8, 23]], ["Waga", [9, 23]],
+        ["Skorpion", [10, 23]], ["Strzelec", [11, 22]],
+        ["Koziorożec", [12, 22]]
       ];
       for(let i = 0; i < zodiac.length; i++) {
         let [sign, [m, d]] = zodiac[i];
@@ -199,25 +196,49 @@
           return sign;
         }
       }
-      return "Capricorn"; // fallback
+      return "Koziorożec"; // fallback
     }
 
     function randomHoroscope(sign) {
       const fortunes = {
-        Aries: ["A surprise is waiting for you!", "Trust your instincts today."],
-        Taurus: ["Stability will find you soon.", "Hard work pays off."],
-        Gemini: ["Expect a call from an old friend.", "Your creativity is at its peak."],
-        Cancer: ["Someone appreciates your kindness.", "Nurture your own needs."],
-        Leo: ["Your energy attracts positivity.", "Be bold with your choices!"],
-        Virgo: ["Small steps lead to big success.", "Stay organized for best results."],
-        Libra: ["Balance is key—don't overcommit.", "An exciting decision is ahead."],
-        Scorpio: ["Trust your gut feeling.", "Mysteries will unfold soon."],
-        Sagittarius: ["Adventure is on the horizon.", "Say yes to a new opportunity."],
-        Capricorn: ["Your persistence pays off.", "A leadership role suits you today."],
-        Aquarius: ["Innovation will solve a problem.", "Connect with your community."],
-        Pisces: ["Dreams hold special meaning now.", "Go with the flow for best results."]
+        "Baran": [
+          "Dziś energia i odwaga to Twoje atuty. Zaskakujący zwrot akcji może Cię zaskoczyć, więc bądź czujny na nowe możliwości. Twój upór pomoże pokonać przeszkody. W relacjach okaż trochę cierpliwości – ktoś doceni Twoją szczerość. Wieczorem czeka Cię satysfakcja z własnych działań."
+        ],
+        "Byk": [
+          "Stabilność zaczyna pojawiać się w Twoim życiu. Zaufaj sobie, nawet jeśli inni wątpią. Twoja wytrwałość i sumienność przyniosą dziś konkretne efekty. Jeśli pojawią się trudności, działaj spokojnie i z rozsądkiem. Ktoś bliski może poprosić Cię o wsparcie – nie odmawiaj, a zyskasz wdzięczność."
+        ],
+        "Bliźnięta": [
+          "Twój umysł pracuje dziś na najwyższych obrotach, a kreatywność pozwoli Ci znaleźć nowe rozwiązania. Nie zdziw się, jeśli odezwie się ktoś z przeszłości – rozmowa może przynieść miłe wspomnienia. Bądź otwarty na nowe propozycje. Dzień sprzyja nauce, komunikacji i spontanicznym pomysłom."
+        ],
+        "Rak": [
+          "Empatia i ciepło, które roztaczasz, przyciągną do Ciebie ludzi. Dziś skup się także na własnych potrzebach i nie bój się odmówić, jeśli czegoś nie czujesz. W domu zapanuje harmonia. Pozwól sobie na chwilę odpoczynku i doceniaj drobne radości codzienności. Ktoś bliski dostrzeże Twoje starania."
+        ],
+        "Lew": [
+          "Twoja pewność siebie rozświetla dziś otoczenie. To idealny dzień, aby podjąć wyzwania lub pokazać się z najlepszej strony. Nie bój się zaryzykować, bo los Ci sprzyja. Warto uwierzyć w swoje możliwości i zabłysnąć w grupie. Wieczorem czeka Cię miłe spotkanie lub niespodzianka."
+        ],
+        "Panna": [
+          "Porządek i konsekwencja to klucz do sukcesu. Dziś nawet małe kroki prowadzą do dużych osiągnięć. Starannie planuj działania i unikaj chaosu. W pracy lub szkole czeka Cię uznanie za rzetelność. W relacjach osobistych szczerość i drobne gesty budują zaufanie na przyszłość."
+        ],
+        "Waga": [
+          "Zachowaj dziś równowagę między obowiązkami a przyjemnościami. Ktoś może poprosić Cię o pomoc w ważnej sprawie – Twoja dyplomacja będzie nieoceniona. Nowa szansa pojawi się, jeśli odważysz się podjąć decyzję. Zadbaj o siebie i nie zapomnij o tym, co sprawia Ci radość."
+        ],
+        "Skorpion": [
+          "Intuicja poprowadzi Cię do właściwych rozwiązań. Dziś możesz odkryć coś ważnego lub rozwiązać nurtującą tajemnicę. Nie bój się zadawać trudnych pytań – odpowiedzi są bliżej, niż myślisz. W relacjach osobistych postaw na szczerość i zaufanie. Wieczorem pozwól sobie na odrobinę relaksu."
+        ],
+        "Strzelec": [
+          "Przygoda i zmiany wiszą w powietrzu – dziś czekają Cię nowe wyzwania. Bądź otwarty na propozycje, nawet jeśli są nietypowe. Optymizm pomoże Ci przekonać innych do swoich pomysłów. Warto podjąć ryzyko i spróbować czegoś, o czym zawsze marzyłeś. Wieczorem poczujesz satysfakcję."
+        ],
+        "Koziorożec": [
+          "Twoja wytrwałość przynosi efekty – nawet jeśli dziś wydaje się trudno, nie rezygnuj. Czeka Cię szansa na pokazanie swoich umiejętności w nowej roli lub projekcie. Zaufaj sobie i działaj systematycznie. W rodzinie możesz liczyć na wsparcie. Dzień zakończy się poczuciem dobrze spełnionego obowiązku."
+        ],
+        "Wodnik": [
+          "Nieszablonowe pomysły okażą się dzisiaj wyjątkowo trafione. Twój entuzjazm przyciągnie ludzi, którzy chcą działać razem z Tobą. Dziel się inspiracją i pomagaj innym – wróci do Ciebie z nawiązką. Czasem wystarczy odwaga, aby coś zmienić. Pod koniec dnia poczujesz się naprawdę potrzebny."
+        ],
+        "Ryby": [
+          "Warto dziś posłuchać własnych marzeń – mogą wskazać Ci właściwą drogę. Daj się ponieść wyobraźni i bądź otwarty na to, co przyniesie los. Intuicja pomoże Ci wyczuć najlepszy moment na działanie. Spędź czas z bliskimi lub zrelaksuj się w samotności. Dzień przyniesie spokojną radość."
+        ]
       };
-      let arr = fortunes[sign] || ["A pleasant surprise is ahead!"];
+      let arr = fortunes[sign] || ["Przygotuj się na miłą niespodziankę – los szykuje coś dobrego!"];
       return arr[Math.floor(Math.random() * arr.length)];
     }
 
@@ -227,14 +248,14 @@
       let month = parseInt(document.getElementById("month").value, 10);
       let year = document.getElementById("year").value;
       if (!day || !month || !year) {
-        document.getElementById("result").textContent = "Please select your full birth date.";
+        document.getElementById("result").textContent = "Proszę wybrać pełną datę urodzenia.";
         return false;
       }
       let sign = getZodiac(day, month);
       let fortune = randomHoroscope(sign);
       document.getElementById("result").innerHTML = `
-        <div>Your sign: <b>${sign}</b></div>
-        <div>Horoscope: <i>${fortune}</i></div>
+        <div>Twój znak zodiaku: <b>${sign}</b></div>
+        <div>Horoskop: <i>${fortune}</i></div>
       `;
       return false;
     }
