@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>My School Project - Birthstone Finder</title>
+  <title>Mój Projekt Szkolny – Wyszukiwarka Kamieni Urodzinowych</title>
   <style>
     body {
       margin: 0;
@@ -92,8 +92,6 @@
         margin-left: 3vw;
       }
     }
-
-    /* AstroMastro Birthstone Finder styling */
     .astro-center {
       display: flex;
       justify-content: center;
@@ -128,23 +126,27 @@
   <input type="checkbox" id="burger-toggle" style="display:none;">
   <label for="burger-toggle" class="burger-icon" style="font-size:2em;cursor:pointer;user-select:none;">&#9776;</label>
   <nav class="burger-menu">
-    <a href="index.html">Home</a>
-    <a href="page1.html">Page 1</a>
-    <a href="page2.html">Page 2</a>
-    <a href="page3.html">Page 3</a>
-    <a href="page4.html">Page 4</a>
-    <a href="page5.html">Page 5</a>
+    <a href="index.html">Strona główna</a>
+    <a href="page1.html">Strona 1</a>
+    <a href="page2.html">Strona 2</a>
+    <a href="page3.html">Strona 3</a>
+    <a href="page4.html">Strona 4</a>
+    <a href="page5.html">Strona 5</a>
   </nav>
-  <span class="menu-title">My School Project</span>
+  <span class="menu-title">Mój Projekt Szkolny</span>
 
   <div class="container">
     <div class="main-content">
-      <h1>AstroMastro: Birthstone Finder</h1>
-      <p style="text-align:center;">Select your birth month to see your birthstone!</p>
+      <h1>AstroMastro: Wyszukiwarka Kamieni Urodzinowych</h1>
+      <p style="text-align:center;">
+        Witaj w naszej interaktywnej wyszukiwarce kamieni urodzinowych!<br>
+        Wybierz swoją datę urodzenia i poznaj kamień przypisany do Twojego miesiąca narodzin oraz ciekawostkę o nim.<br>
+        <span style="color:#555;">Kamienie urodzinowe mają swoją symbolikę – sprawdź, co mówi o Tobie Twój kamień!</span>
+      </p>
       <div class="astro-center">
         <form class="astro-form" onsubmit="return showBirthstone(event)">
           <select id="day2" required>
-            <option value="">Day</option>
+            <option value="">Dzień</option>
             <script>
               for (let d = 1; d <= 31; d++) {
                 document.write(`<option value="${d}">${d}</option>`);
@@ -152,22 +154,22 @@
             </script>
           </select>
           <select id="month2" required>
-            <option value="">Month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+            <option value="">Miesiąc</option>
+            <option value="1">Styczeń</option>
+            <option value="2">Luty</option>
+            <option value="3">Marzec</option>
+            <option value="4">Kwiecień</option>
+            <option value="5">Maj</option>
+            <option value="6">Czerwiec</option>
+            <option value="7">Lipiec</option>
+            <option value="8">Sierpień</option>
+            <option value="9">Wrzesień</option>
+            <option value="10">Październik</option>
+            <option value="11">Listopad</option>
+            <option value="12">Grudzień</option>
           </select>
           <select id="year2" required>
-            <option value="">Year</option>
+            <option value="">Rok</option>
             <script>
               let yearNow = new Date().getFullYear();
               for (let y = yearNow; y >= 1900; y--) {
@@ -175,41 +177,59 @@
               }
             </script>
           </select>
-          <button type="submit">AstroMastro</button>
+          <button type="submit">Znajdź Kamień Urodzinowy!</button>
         </form>
         <div id="result2" class="astro-result"></div>
+      </div>
+      <div style="margin-top:35px; color:#7a7a7a; font-size:0.98em; text-align:center;">
+        <b>Co to jest kamień urodzinowy?</b><br>
+        Kamienie urodzinowe to szczególne minerały przypisane do każdego miesiąca roku. Od wieków uznaje się, że przynoszą szczęście, ochronę lub wzmacniają pozytywne cechy charakteru.<br>
+        <i>Wybierz datę i przekonaj się, który kamień pasuje właśnie do Ciebie!</i>
       </div>
     </div>
   </div>
   <script>
     function getBirthstone(month) {
+      // Kamienie urodzinowe z ciekawostkami
       const birthstones = {
-        1:  "Garnet",
-        2:  "Amethyst",
-        3:  "Aquamarine",
-        4:  "Diamond",
-        5:  "Emerald",
-        6:  "Alexandrite (or Pearl/Moonstone)",
-        7:  "Ruby",
-        8:  "Peridot",
-        9:  "Sapphire",
-        10: "Opal (or Tourmaline)",
-        11: "Topaz (or Citrine)",
-        12: "Turquoise (or Zircon/Tanzanite)"
+        1:  "Granat – kamień siły i energii. Mówi się, że przynosi wytrwałość i ochronę.",
+        2:  "Ametyst – symbol spokoju i równowagi. Uważa się, że chroni przed negatywną energią.",
+        3:  "Akwamaryn – kamień odwagi, spokoju i jasności umysłu. Dawniej był talizmanem żeglarzy.",
+        4:  "Diament – symbol czystości i niezniszczalnej miłości. Najtwardszy minerał na Ziemi!",
+        5:  "Szmaragd – kojarzony z harmonią, odnową i sukcesem. Ulubiony kamień Kleopatry.",
+        6:  "Aleksandryt (lub perła/księżycowy) – symbol szczęścia i przemiany. Często uznaje się też perły za kamień czerwca.",
+        7:  "Rubin – oznacza miłość i pasję. Uważany za 'króla klejnotów', przynosi energię i odwagę.",
+        8:  "Oliwin – kamień wewnętrznego spokoju i dobrego samopoczucia. Nazywany także peridotem.",
+        9:  "Szafir – symbol mądrości i lojalności. Noszony przez wielu monarchów.",
+        10: "Opal (lub turmalin) – opal podkreśla kreatywność i szczęście. Turmalin chroni przed złą energią.",
+        11: "Topaz (lub cytryn) – topaz wzmacnia wiarę w siebie i sukces. Cytryn jest kamieniem optymizmu.",
+        12: "Turkus (lub cyrkon/tanzanit) – kamień ochrony, przyjaźni i szczęścia, znany od tysięcy lat."
       };
-      return birthstones[month] || "Unknown";
+      return birthstones[month] || "Brak danych o kamieniu dla wybranego miesiąca.";
     }
 
     function showBirthstone(event) {
       event.preventDefault();
-      let month = parseInt(document.getElementById("month2").value, 10);
-      if (!month) {
-        document.getElementById("result2").textContent = "Please select your birth month.";
+      let dzien = document.getElementById("day2").value;
+      let miesiac = parseInt(document.getElementById("month2").value, 10);
+      let rok = document.getElementById("year2").value;
+      let resultDiv = document.getElementById("result2");
+
+      if (!dzien || !miesiac || !rok) {
+        resultDiv.innerHTML = `<span style="color:red;">Proszę wybrać pełną datę urodzenia (dzień, miesiąc i rok).</span>`;
         return false;
       }
-      let birthstone = getBirthstone(month);
-      document.getElementById("result2").innerHTML = `
-        <div>Your birthstone: <b>${birthstone}</b></div>
+
+      let birthstone = getBirthstone(miesiac);
+
+      resultDiv.innerHTML = `
+        <div>
+          <span style="font-size:1.1em;">Twój kamień urodzinowy dla daty <b>${dzien}.${miesiac}.${rok}</b> to:</span><br><br>
+          <b style="font-size:1.25em; color:#174086;">${birthstone}</b>
+        </div>
+        <div style="margin-top:18px; color:#556;">
+          <i>Czy wiedziałeś/aś? Każdy kamień urodzinowy ma swoją niepowtarzalną historię i symbolikę – sprawdź, czy zgadza się z Twoją osobowością!</i>
+        </div>
       `;
       return false;
     }
