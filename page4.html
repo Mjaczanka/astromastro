@@ -5,7 +5,192 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mój Projekt Szkolny - Forum</title>
   <style>
-    /* ... cały Twój CSS bez zmian ... */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+    }
+    .burger-icon {
+      display: inline-block;
+      padding: 10px 14px;
+      background: #222;
+      color: #fff;
+      border-radius: 6px;
+      margin: 14px 0 0 14px;
+      z-index: 10;
+      position: relative;
+    }
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      background: #23272c;
+      position: absolute;
+      top: 56px;
+      left: 16px;
+      min-width: 160px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 12px #0003;
+      z-index: 20;
+    }
+    .burger-menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-bottom: 1px solid #353b44;
+      transition: background 0.2s;
+    }
+    .burger-menu a:last-child { border-bottom: none; }
+    .burger-menu a:hover {
+      background: #29303a;
+      color: #f1c40f;
+    }
+    #burger-toggle {
+      display: none;
+    }
+    #burger-toggle:checked ~ .burger-menu {
+      display: flex;
+    }
+    .menu-title {
+      display: inline-block;
+      margin-left: 70px;
+      margin-top: 22px;
+      font-size: 1.25em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #222;
+    }
+    .container {
+      display: flex;
+      min-height: 85vh;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 56px;
+    }
+    .main-content {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 2px 14px #0001;
+      max-width: 700px;
+      width: 100%;
+      margin: 40px auto;
+    }
+    @media (max-width: 700px) {
+      .main-content {
+        padding: 22px 5vw;
+      }
+      .menu-title {
+        margin-left: 60px;
+        font-size: 1em;
+        margin-top: 20px;
+      }
+      .burger-menu {
+        left: 0;
+        right: 0;
+        min-width: 0;
+        width: 94vw;
+        margin-left: 3vw;
+      }
+    }
+    .astro-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .forum-container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: #fafbfc;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 2px 6px #ddd;
+    }
+    .forum-title {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 18px;
+    }
+    .forum-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .forum-form input, .forum-form textarea, .forum-form select {
+      padding: 8px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      outline: none;
+    }
+    .forum-form button, .add-topic-btn {
+      padding: 8px 0;
+      background: #283747;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    .forum-form button:hover, .add-topic-btn:hover {
+      background: #154360;
+    }
+    .posts-list {
+      margin-bottom: 12px;
+    }
+    .post-item {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    .post-author {
+      font-weight: bold;
+      color: #2874a6;
+    }
+    .post-date {
+      font-size: 0.8em;
+      color: #888;
+      margin-left: 12px;
+    }
+    .post-text {
+      margin: 6px 0 0 0;
+      white-space: pre-wrap;
+    }
+    .topic-select-label {
+      font-weight: bold;
+      margin-bottom: 2px;
+      display: block;
+    }
+    .topic-filter {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .add-topic-area {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .add-topic-area input {
+      flex: 1 1 0;
+      padding: 8px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+    }
+    .add-topic-message {
+      color: #bb2222;
+      font-size: 0.97em;
+      margin-top: 2px;
+      min-height: 18px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -26,10 +211,10 @@
     <div class="main-content">
       <div class="astro-center">
         <div class="forum-container">
-          <div class="forum-title">Forum klasowe</div>
+          <div class="forum-title">Forum Klasowe</div>
           <!-- Topic filter (for viewing posts) -->
           <div class="topic-filter">
-            <label class="topic-select-label" for="filter-topic">Wyświetl temat:</label>
+            <label class="topic-select-label" for="filter-topic">Wybierz temat:</label>
             <select id="filter-topic" onchange="renderPosts()"></select>
           </div>
           <!-- Add topic area -->
@@ -44,7 +229,7 @@
             <select id="post-topic" required></select>
             <input type="text" id="forum-name" placeholder="Twoje imię" maxlength="32" required>
             <textarea id="forum-comment" rows="3" placeholder="Twój komentarz" maxlength="500" required></textarea>
-            <button type="submit">Opublikuj</button>
+            <button type="submit">Dodaj post</button>
           </form>
           <div class="posts-list" id="posts-list"></div>
         </div>
@@ -52,11 +237,11 @@
     </div>
   </div>
   <script>
-    // Default topics
+    // Default topics in Polish
     const defaultTopics = [
       "Horoskopy",
       "Kamienie szlachetne",
-      "Dopasowanie w związku",
+      "Dopasowanie związków",
       "Dyskusja ogólna",
       "Sugestie dotyczące strony"
     ];
@@ -80,10 +265,8 @@
       const topics = loadTopics();
       const filterSelect = document.getElementById('filter-topic');
       const postSelect = document.getElementById('post-topic');
-      // Clear all
       filterSelect.innerHTML = '';
       postSelect.innerHTML = '';
-      // Fill all
       topics.forEach(topic => {
         const opt1 = document.createElement('option');
         opt1.value = topic;
@@ -95,7 +278,6 @@
         opt2.textContent = topic;
         postSelect.appendChild(opt2);
       });
-      // Keep the filter and post selects synced
       postSelect.value = filterSelect.value;
     }
 
@@ -118,16 +300,16 @@
       const selectedTopic = document.getElementById('filter-topic').value;
       const filtered = posts.filter(post => post.topic === selectedTopic);
       if (filtered.length === 0) {
-        postsDiv.innerHTML = '<div style="text-align:center; color:#888;">Brak postów w tym temacie.</div>';
+        postsDiv.innerHTML = '<div style="text-align:center; color:#888;">Brak postów dla tego tematu.</div>';
         return;
       }
-      postsDiv.innerHTML = filtered.map(post => `
-        <div class="post-item">
+      postsDiv.innerHTML = filtered.map(post =>
+        `<div class="post-item">
           <span class="post-author">${escapeHtml(post.name)}</span>
           <span class="post-date">${escapeHtml(post.date)}</span>
           <div class="post-text">${escapeHtml(post.comment)}</div>
-        </div>
-      `).join('');
+        </div>`
+      ).join('');
     }
 
     function addPost(event) {
@@ -142,7 +324,6 @@
       savePosts(posts);
       renderPosts();
       event.target.reset();
-      // Reset post-topic to match filter for convenience
       document.getElementById('post-topic').value = document.getElementById('filter-topic').value;
       return false;
     }
@@ -157,44 +338,36 @@
         return false;
       }
       if (newTopic.length > 32) {
-        msgDiv.textContent = "Nazwa tematu jest za długa (max 32 znaki).";
+        msgDiv.textContent = "Nazwa tematu za długa (max 32 znaki).";
         return false;
       }
-      // Normalize for duplicate check
       let topics = loadTopics();
       let exists = topics.some(t => t.toLowerCase() === newTopic.toLowerCase());
       if (exists) {
         msgDiv.textContent = "Taki temat już istnieje.";
         return false;
       }
-      // Add, save, and repopulate dropdowns
       topics.push(newTopic);
       saveTopics(topics);
       input.value = "";
       msgDiv.textContent = "Temat dodany!";
       populateTopicDropdowns();
-      // Set selects to new topic
       document.getElementById('filter-topic').value = newTopic;
       document.getElementById('post-topic').value = newTopic;
       renderPosts();
-      // Clear message after 2 sec
       setTimeout(() => { msgDiv.textContent = ""; }, 2000);
       return false;
     }
 
-    // Prevent HTML/script injection
     function escapeHtml(text) {
       return text.replace(/[&<>"']/g, function(m) {
         return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
       });
     }
 
-    // On page load: initialize topics and posts
     document.addEventListener("DOMContentLoaded", function() {
-      // If topics don't exist in storage, save defaults
       if (!localStorage.getItem('forumTopics')) saveTopics(defaultTopics);
       populateTopicDropdowns();
-      // Sync post topic with filter
       document.getElementById('filter-topic').addEventListener('change', function() {
         document.getElementById('post-topic').value = this.value;
         renderPosts();
